@@ -1,20 +1,21 @@
 import { createTransport } from "nodemailer";
+import { config } from "firebase-functions";
 
 export const sendEmail = async (subject: string, html: string) => {
 	const mailOptions = {
-		from: `Tiago Ribeiro <${process.env.EMAIL}>`,
-		to: process.env.TO,
+		from: `Tiago Ribeiro <${config().email.address}>`,
+		to: config().email.to,
 		subject,
 		html,
 	};
 
 	const transporter = createTransport({
-		host: process.env.HOST,
-		port: Number(process.env.PORT),
+		host: config().email.host,
+		port: Number(config().email.port),
 		secure: true,
 		auth: {
-			user: process.env.EMAIL,
-			pass: process.env.PASSWORD,
+			user: config().email.address,
+			pass: config().email.password,
 		},
 	});
 

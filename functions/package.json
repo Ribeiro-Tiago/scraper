@@ -27,6 +27,7 @@
 		"@types/node-fetch": "^2.5.7",
 		"@types/nodemailer": "^6.4.0",
 		"firebase-functions-test": "^0.2.0",
+		"tslint": "^6.1.2",
 		"typescript": "^3.8.0"
 	},
 	"private": true

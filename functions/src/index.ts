@@ -6,6 +6,6 @@ admin.initializeApp();
 import CDT from "./scrapers/cargadetrabalhos";
 
 export const cargaDeTrabalhos = functions
-	.region("europe-west2")
+	.region("europe-west1")
 	.pubsub.schedule("0 0 * * *")
 	.onRun(() => CDT());

@@ -10,7 +10,6 @@ dotenv({ path: resolve(__dirname, "../.env") });
 import CDT from "./scrapers/cargadetrabalhos";
 
 export const cargaDeTrabalhos = functions
-	.region("europe-west1")
+	.region("europe-west2")
 	.pubsub.schedule("0 0 * * *")
-	.timeZone("Europe/Belgium")
 	.onRun(() => CDT());

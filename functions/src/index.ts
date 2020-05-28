@@ -1,11 +1,7 @@
 import * as functions from "firebase-functions";
 import * as admin from "firebase-admin";
-import { config as dotenv } from "dotenv";
-import { resolve } from "path";
 
 admin.initializeApp();
-
-dotenv({ path: resolve(__dirname, "../.env") });
 
 import CDT from "./scrapers/cargadetrabalhos";
 

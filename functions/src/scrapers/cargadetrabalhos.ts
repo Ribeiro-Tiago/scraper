@@ -48,7 +48,7 @@ export default async () => {
 
 		await sendEmail("Scraper - carga de trabalhos", scraped);
 	} catch (err) {
-		sendEmail("Scrapper error - carga de trabalhos", err);
+		await sendEmail("Scrapper error - carga de trabalhos", err);
 		console.error("err during scrap", err);
 	}
 };

@@ -12,7 +12,8 @@ export default async () => {
 		const result = await (await fetch(url)).text();
 		let link: string;
 		let scraped = "";
-		let elem;
+		let elem: Element;
+		let firstResultLink: string;
 
 		const elems = new JSDOM(result).window.document.querySelectorAll(
 			".entrycontent",
@@ -27,8 +28,12 @@ export default async () => {
 				.getAttribute("href")
 				.split("/print")[0];
 
+			if (!firstResultLink) {
+				firstResultLink = link;
+			}
+
 			if (lastPostLink === link) {
-				await updateLastPost(link);
+				await updateLastPost(firstResultLink);
 				break;
 			}
 

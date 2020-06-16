@@ -21,4 +21,4 @@ jobs:
       - name: Deploy
         run: |
           cd functions
-          npm run deploy --token ${{ FIREBASE_TOKEN }}
+          npm run deploy --token ${{ secrets.FIREBASE_TOKEN }}

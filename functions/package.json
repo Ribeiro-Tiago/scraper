@@ -3,8 +3,9 @@
 	"scripts": {
 		"lint": "tslint --project tsconfig.json",
 		"build": "tsc",
-		"serve": "npm run build && firebase emulators:start --only functions,firestore",
+		"serve": "npm run build && firebase emulators:start --only functions,firestore --import ./data",
 		"shell": "npm run build && firebase functions:shell",
+		"export:firestore": "firebase emulators:export ./data --force",
 		"start": "npm run shell",
 		"deploy": "firebase deploy --only functions",
 		"logs": "firebase functions:log"

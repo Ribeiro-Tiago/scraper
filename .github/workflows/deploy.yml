@@ -13,12 +13,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Build
-        run: |
-          cd functions 
-          npm install
-
-      - name: Deploy
+      - name: deploy
         run: |
           cd functions
+          npm install
           npm run deploy --token ${{ secrets.FIREBASE_TOKEN }} --verbose

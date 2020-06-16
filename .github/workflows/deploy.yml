@@ -1,0 +1,24 @@
+name: deploy
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build
+        run: |
+          cd functions 
+          npm install
+
+      - name: Deploy
+        run: |
+          cd functions
+          npm run deploy

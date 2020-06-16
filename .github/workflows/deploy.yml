@@ -7,7 +7,7 @@ on:
     branches: [master]
 
 jobs:
-  build-deploy:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,4 +21,4 @@ jobs:
       - name: Deploy
         run: |
           cd functions
-          firebase deploy --only functions --token ${{ secrets.FIREBASE_TOKEN }} --verbose
+          npm run deploy --token ${{ secrets.FIREBASE_TOKEN }} --verbose

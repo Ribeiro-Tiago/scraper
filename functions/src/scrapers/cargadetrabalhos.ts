@@ -1,8 +1,9 @@
 import fetch from "node-fetch";
 import { JSDOM } from "jsdom";
 
-import { sendEmail } from "../utils/mailer";
+import { emailRecipients, emailAdmin } from "../utils/mailer";
 import { getLastPost, updateLastPost } from "../firestore/cargadetrabalhos";
+import { Scrapers } from "../types";
 
 const url =
 	"http://www.cargadetrabalhos.net:80/category/web-design-programacao?s=+freelance";
@@ -46,9 +47,13 @@ export default async () => {
 			return;
 		}
 
-		await sendEmail("Scraper - carga de trabalhos", scraped);
+		await emailRecipients(
+			Scrapers.CARGA_DE_TRABALHOS,
+			"Scraper - carga de trabalhos",
+			scraped,
+		);
 	} catch (err) {
-		await sendEmail("Scrapper error - carga de trabalhos", err);
+		await emailAdmin("Scrapper error - carga de trabalhos", err);
 		console.error("err during scrap", err);
 	}
 };

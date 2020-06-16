@@ -3,10 +3,12 @@
 	"scripts": {
 		"lint": "tslint --project tsconfig.json",
 		"build": "tsc",
-		"serve": "npm run build && firebase emulators:start --only functions,firestore",
+		"dev": "concurrently \"npm run build --watch\" \"npm run emulators\" -c \"green,yellow\" -n \"tsc, emulator\"",
+		"emulators": "firebase emulators:start --only functions,firestore --import ./data",
+		"export:firestore": "firebase emulators:export ./data --force",
 		"shell": "npm run build && firebase functions:shell",
 		"start": "npm run shell",
-		"deploy": "firebase deploy --only functions",
+		"deploy": "firebase deploy --only functions --token \"$FIREBASE_TOKEN\"",
 		"logs": "firebase functions:log"
 	},
 	"engines": {
@@ -24,6 +26,7 @@
 		"@types/jsdom": "^16.2.3",
 		"@types/node-fetch": "^2.5.7",
 		"@types/nodemailer": "^6.4.0",
+		"concurrently": "^5.2.0",
 		"firebase-functions-test": "^0.2.0",
 		"firebase-tools": "^8.4.2",
 		"tslint": "^6.1.2",

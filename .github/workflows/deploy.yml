@@ -16,7 +16,7 @@ jobs:
       - name: deploy
         run: |
           cd functions
-          npm install
+          npm ci
           npm run deploy
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}

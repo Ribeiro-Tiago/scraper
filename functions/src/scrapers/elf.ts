@@ -50,7 +50,7 @@ export default async () => {
 
 			location =
 				filters.querySelector(".field--name-field-vacancy-address")
-					.textContent || "N/A";
+					.textContent || "No location specified";
 
 			type = filters.querySelector(
 				".field--name-field-vacancy-statute",
@@ -60,8 +60,12 @@ export default async () => {
 				".field--name-field-vacancy-sector",
 			).textContent;
 
+			if (scraped) {
+				scraped += "<hr/>";
+			}
+
 			scraped += `<a href="${link}">
-        <h2>${title} - ${company}</h2>
+        <h2 style="margin-bottom:0;>${title} - ${company}</h2>
         <p>${location} - ${type} - ${sector}      
       </a>`;
 		}

@@ -65,7 +65,7 @@ export default async () => {
 			}
 
 			scraped += `<a href="${link}">
-        <h2 style="margin-bottom:0;>${title} - ${company}</h2>
+        <h2 style="margin-bottom:0;">${title} - ${company}</h2>
         <p>${location} - ${type} - ${sector}</p>
       </a>`;
 		}

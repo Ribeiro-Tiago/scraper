@@ -8,6 +8,11 @@ import axios from "../utils/axios";
 const url =
 	"https://11.be/vacatures?f%5B0%5D=vacancy_region%3A28&f%5B1%5D=vacancy_region%3A30&f%5B2%5D=vacancy_sector%3A11&f%5B3%5D=vacancy_sector%3A12&f%5B4%5D=vacancy_sector%3A15&f%5B5%5D=vacancy_sector%3A16&f%5B6%5D=vacancy_sector%3A19&f%5B7%5D=vacancy_type%3A20";
 
+
+const buildFullURL = (url: string) => {
+	return (url.startsWith("/")) ? `https://11.be${url}` : `https://11.be/${url}`
+}
+
 export default async () => {
 	try {
 		const [result, lastDateChecked] = await Promise.all([
@@ -42,6 +47,7 @@ export default async () => {
 			}
 
 			link = elem.querySelector("a").getAttribute("href");
+
 			title = elem.querySelector("h3").textContent;
 
 			company = elem.querySelector(".field--name-field-employer").textContent;
@@ -64,10 +70,10 @@ export default async () => {
 				scraped += "<hr/>";
 			}
 
-			scraped += `<a href="${link}">
-        <h2 style="margin-bottom:0;">${title} - ${company}</h2>
-        <p>${location} - ${type} - ${sector}</p>
-      </a>`;
+			scraped += `<a href="${buildFullURL(link)}">
+				<h2 style="margin-bottom:0;">${title} - ${company}</h2>
+				<p>${location} - ${type} - ${sector}</p>
+			</a>`;
 		}
 
 		if (!scraped) {

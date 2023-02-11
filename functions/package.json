@@ -29,7 +29,7 @@
 		"diagnostics": "^2.0.2",
 		"env-variable": "^0.0.6",
 		"firebase-functions-test": "^0.3.0",
-		"firebase-tools": "^9.23.3",
+		"firebase-tools": "^11.22.0",
 		"tslint": "^6.1.2",
 		"typescript": "^4.3.2"
 	},
